@@ -1,0 +1,38 @@
+| analysis alive testClasses classesToMutate |
+testClasses :=  { 
+		AlgoRastreadorZTest.
+		CriterioTest.
+		PeleadorTest.
+		RastreadorTest.
+		TransformacionTest.
+		VisorTest.
+}.
+classesToMutate := {  
+		AlgoRastreadorZ .
+		Base.
+		Debil.
+		Fuerte.
+		KaioKen.
+		MonoGigante.
+		Peleador.
+		VisorNuevo.
+		VisorViejo.
+		CriterioNoValidoError.
+		KiNoValidoError.
+		ModeloNoValidoError.
+		PeleadorNoEncontradoError.
+		RegistroVacioError.
+		TransformacionNoValidaError.
+}.
+
+analysis := MTAnalysis new
+    classesToMutate: classesToMutate;
+    testClasses: testClasses.
+
+analysis run.
+
+"To retrieve the alive mutations"
+alive := analysis generalResult aliveMutants.
+
+"To inspect the results"
+analysis generalResult inspect.
